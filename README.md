@@ -2,7 +2,11 @@
 
 This is the user interface part of the scramblies project.
 
-Reagent alone is more than enough for a simple ui for this project. To run it use:
+![Scramblies user interface](resources/ui.png?raw=true) 
+
+Reagent alone is more than enough for for the simple ui of this project although expanding to use re-frame would be an easy step. 
+
+To run it use:
 
 ```
 lein figwheel

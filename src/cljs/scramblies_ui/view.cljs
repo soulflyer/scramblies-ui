@@ -5,7 +5,7 @@
 (defn home-page []
   [:div
    [:h2 "Scramblies"]
-   [:p "Scramblies checks if it is possible to make string2 from the characters contained in string 1"]
+   [:p "Scramblies checks if it is possible to make string 2 from the characters contained in string 1"]
    [:div
     [:label "string 1 "]
     [:input {:type "text"

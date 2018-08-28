@@ -10,8 +10,10 @@
                          (str "http://localhost:3000/api/scramblies/" str1 "/" str2)
                          {:with-credentials? false}))]
         (prn (:status response))
-        (reset! atoms/result  (str str1
+        (reset! atoms/result  (str "\""
+                                   str1
                                    (if (:body response)
-                                     " contains "
-                                     " does NOT contain ")
-                                   str2)))))
+                                     "\" contains \""
+                                     "\" does NOT contain \"")
+                                   str2
+                                   "\"")))))

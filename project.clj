@@ -4,20 +4,19 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.clojure/clojure "1.9.0"]
-                 [ring-server "0.5.0"]
+  :dependencies [[cljs-http "0.1.45"]
+                 [compojure "1.6.1"]
+                 [hiccup "1.0.5"]
+                 [org.clojure/clojure "1.9.0"]
+                 [org.clojure/clojurescript "1.10.339" :scope "provided"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.1"]
                  [ring "1.6.3"]
+                 [ring-server "0.5.0"]
                  [ring/ring-defaults "0.3.1"]
-                 [compojure "1.6.1"]
-                 [hiccup "1.0.5"]
-                 [yogthos/config "1.1.1"]
-                 [org.clojure/clojurescript "1.10.339"
-                  :scope "provided"]
                  [secretary "1.2.3"]
-                 [venantius/accountant "0.2.4"
-                  :exclusions [org.clojure/tools.reader]]]
+                 [venantius/accountant "0.2.4" :exclusions [org.clojure/tools.reader]]
+                 [yogthos/config "1.1.1"]]
 
   :plugins [[lein-environ "1.1.0"]
             [lein-cljsbuild "1.1.7"]
@@ -80,21 +79,19 @@
 
 
   :profiles {:dev {:repl-options {:init-ns scramblies-ui.repl}
-                   :dependencies [[cider/piggieback "0.3.8"]
-                                  [binaryage/devtools "0.9.10"]
-                                  [ring/ring-mock "0.3.2"]
-                                  [ring/ring-devel "1.6.3"]
-                                  [prone "1.5.2"]
+                   :dependencies [[binaryage/devtools "0.9.10"]
+                                  [cider/piggieback "0.3.8"]
+                                  [cider/piggieback "0.3.8"]
                                   [figwheel-sidecar "0.5.16"]
                                   [nrepl "0.4.4"]
-                                  [cider/piggieback "0.3.8"]
                                   [pjstadig/humane-test-output "0.8.3"]
-                                  
- ]
+                                  [prone "1.5.2"]
+                                  [ring/ring-devel "1.6.3"]
+                                  [ring/ring-mock "0.3.2"]]
 
                    :source-paths ["env/dev/clj"]
                    :plugins [[lein-figwheel "0.5.16"]
-]
+                             ]
 
                    :injections [(require 'pjstadig.humane-test-output)
                                 (pjstadig.humane-test-output/activate!)]

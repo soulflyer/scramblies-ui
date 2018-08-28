@@ -1,18 +1,26 @@
 (ns scramblies-ui.core
-    (:require [reagent.core :as reagent :refer [atom]]
-              [secretary.core :as secretary :include-macros true]
-              [accountant.core :as accountant]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            [secretary.core :as secretary :include-macros true]
+            [accountant.core :as accountant]))
 
+(defonce string1 (atom ""))
+(defonce string2 (atom ""))
 ;; -------------------------
 ;; Views
 
 (defn home-page []
-  [:div [:h2 "Welcome to scramblies-ui"]
-   [:div [:a {:href "/about"} "go to about page"]]])
-
-(defn about-page []
-  [:div [:h2 "About scramblies-ui"]
-   [:div [:a {:href "/"} "go to the home page"]]])
+  [:div
+   [:h2 "Scramblies"]
+   [:div "string 1"
+    [:input {:type "text"
+             :value @string1
+             :on-change #(reset! string1 (-> % .-target .-value))}]]
+   [:div "string 2"
+    [:input {:type "text"
+             :value @string2
+             :on-change #(reset! string2 (-> % .-target .-value))}]]
+   [:input {:type "button" :value "Click me!"
+            :on-click #(println "click")}]])
 
 ;; -------------------------
 ;; Routes
@@ -24,9 +32,6 @@
 
 (secretary/defroute "/" []
   (reset! page #'home-page))
-
-(secretary/defroute "/about" []
-  (reset! page #'about-page))
 
 ;; -------------------------
 ;; Initialize app

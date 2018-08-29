@@ -9,11 +9,13 @@
                        (http/get
                          (str "http://localhost:3000/api/scramblies/" str1 "/" str2)
                          {:with-credentials? false}))]
-        (prn (:status response))
-        (reset! atoms/result  (str "\""
-                                   str1
-                                   (if (:body response)
-                                     "\" contains \""
-                                     "\" does NOT contain \"")
-                                   str2
-                                   "\"")))))
+        (reset! atoms/result
+                (if (= 200 (:status response))
+                  (str "\""
+                       str1
+                       (if (:body response)
+                         "\" contains \""
+                         "\" does NOT contain \"")
+                       str2
+                       "\"")
+                  (str "API call failed, check server is running and CORS is allowed."))))))
